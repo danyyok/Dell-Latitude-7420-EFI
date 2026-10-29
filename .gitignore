@@ -1,0 +1,13 @@
+﻿.DS_Store
+*.log
+*.log.*
+*.bak
+*.tmp
+*.orig
+*~
+Backups/
+build/
+/EFI/OC/Drivers/HfsPlus.efi
+/EFI/OC/Drivers/apfs_aligned.efi
+**/.contentFlavour
+**/.contentVisibility
