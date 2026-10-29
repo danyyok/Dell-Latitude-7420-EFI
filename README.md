@@ -41,6 +41,11 @@ After building, move `build/EFI` folder onto `FAT32` formatted flash stick.
 
 Please refer to [MacRecoveryX page](https://github.com/AngeloAvv/MacRecoveryX) and download Tahoe Recovery; move both `BaseSystem.dmg` and `BaseSystem.chunklist` to `com.apple.recovery.boot` folder onto `FAT32` formatted flash stick.
 
+## Prepare laptop
+
+Actually, you don't need to tweak anything on BIOS, except turning off Secure Boot. Make sure to have at least 40GB on SSD to install Tahoe.
+
+
 ## macOS Installation process (from Recovery)
 
 This EFI includes `HoRNDIS.kext`, which enables USB tethering during macOS Recovery. This is useful for establishing an internet connection via a USB-C to USB-C cable connected to your phone (with USB Tethering enabled in your phone's settings). 
@@ -51,10 +56,14 @@ The rest of the installation follows the standard process. If you are unfamiliar
 
 ## Graphics and firmware drivers
 
-The EFI bundles `WhateverXe.kext` v0.6.1 and `AirportItlwm.kext`. Graphics acceleration also requires WhateverXe-Graphics 0.3.2 installed in macOS; its installer and payload are not included. Please refer to [WhateverXe-Graphics page](https://github.com/b00t0x/WhateverXe-Graphics) for installation process and .pkg release file.
+The EFI bundles `WhateverXe.kext` v0.6.1 and `AirportItlwm.kext`. Graphics acceleration also requires WhateverXe-Graphics 0.3.2 installed in macOS; its installer and payload are not included. Please refer to [WhateverXe-Graphics page](https://github.com/b00t0x/WhateverXe-Graphics) for installation process and .pkg release file.(This is mandatory for full graphics acceleration.)
 
 
 The helper downloads pinned firmware drivers from [Acidanthera OcBinaryData](https://github.com/acidanthera/OcBinaryData/tree/master/Drivers). HfsPlus is proprietary and not redistributed; `apfs_aligned.efi` is used with APFS Jumpstart disabled for the Tahoe workaround in [Acidanthera issue 2499](https://github.com/acidanthera/bugtracker/issues/2499).
 
 
 This EFI is specific to the Latitude 7420. macOS and the WhateverXe-Graphics installer are not redistributed; included components retain their upstream licenses.
+
+## My next plans?
+
+I was thinking about doing the same repository/tree for macOS Sequoia. If this one gets popular, I will definitely make it happen!
