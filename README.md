@@ -14,7 +14,7 @@ OpenCore EFI for a Dell Latitude 7420 with an 11th gen Intel Core i7-1165G7 and 
 
 ## Known issues and untested areas
 
-No currently failing feature has been reported. Sleep/wake, external displays, FileVault, clean-install media, and macOS upgrade paths are not tested. Please note that this repository state is still "WIP"!!!
+No currently failing feature has been reported. Sleep/wake, external displays, FileVault, clean-install media, and macOS upgrade paths are not tested. Please note that this repository state is still "WIP"!!
 
 ## Config profiles
 
@@ -33,9 +33,19 @@ On macOS/Linux, run `bash ./tools/GenSMBIOS/GenSMBIOS.command`, generate and rec
 
 The Bash helper creates `build/EFI/`. It requires `bash`, `curl`, `shasum`, and Python 3. Back up the EFI partition and validate the prepared config with `ocvalidate` from the matching OpenCore release before use.
 
+## macOS Installation process (from Recovery)
+
+This EFI includes `HoRNDIS.kext`, which enables USB tethering during macOS Recovery. This is useful for establishing an internet connection via a USB-C to USB-C cable connected to your phone (with USB Tethering enabled in your phone's settings). 
+
+**Note on USB Tethering behavior:** The connection might not establish immediately. In my experience, it can take about 5–10 minutes, and you may need to toggle the USB Tethering setting on and off on your phone a few times until it initializes connection.
+
+The rest of the installation follows the standard process. If you are unfamiliar with the basics of installing macOS from recovery, google it.
+
+
 ## Graphics and firmware drivers
 
 The EFI bundles `WhateverXe.kext` v0.6.1 and `AirportItlwm.kext`. Graphics acceleration also requires WhateverXe-Graphics 0.3.2 installed in macOS; its installer and payload are not included. Please refer to [WhateverXe-Graphics page](https://github.com/b00t0x/WhateverXe-Graphics) for installation process and .pkg release file.
+
 
 The helper downloads pinned firmware drivers from [Acidanthera OcBinaryData](https://github.com/acidanthera/OcBinaryData/tree/master/Drivers). HfsPlus is proprietary and not redistributed; `apfs_aligned.efi` is used with APFS Jumpstart disabled for the Tahoe workaround in [Acidanthera issue 2499](https://github.com/acidanthera/bugtracker/issues/2499).
 
