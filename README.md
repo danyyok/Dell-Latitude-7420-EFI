@@ -31,7 +31,15 @@ choose 3rd option(Generate SMBIOS), then type `MacBookPro16,2`, record Serial, B
 
 On macOS/Linux, run `bash ./tools/GenSMBIOS/GenSMBIOS.command`, generate and record the values without selecting a plist, then run `bash ./tools/prepare-efi.sh` and enter recorded values.
 
-The Bash helper creates `build/EFI/`. It requires `bash`, `curl`, `shasum`, and Python 3. Back up the EFI partition and validate the prepared config with `ocvalidate` from the matching OpenCore release before use.
+The Bash helper creates `build/EFI`. It requires `bash`, `curl`, `shasum`, and Python 3. Back up the EFI partition and validate the prepared config with `ocvalidate` from the matching OpenCore release before use.
+
+
+
+After building, move `build/EFI` folder onto `FAT32` formatted flash stick.
+
+## Prepare macOS Tahoe 26.7.1 Recovery image
+
+Please refer to [MacRecoveryX page](https://github.com/AngeloAvv/MacRecoveryX) and download Tahoe Recovery; move both `BaseSystem.dmg` and `BaseSystem.chunklist` to `com.apple.recovery.boot` folder onto `FAT32` formatted flash stick.
 
 ## macOS Installation process (from Recovery)
 
@@ -40,7 +48,6 @@ This EFI includes `HoRNDIS.kext`, which enables USB tethering during macOS Recov
 **Note on USB Tethering behavior:** The connection might not establish immediately. In my experience, it can take about 5–10 minutes, and you may need to toggle the USB Tethering setting on and off on your phone a few times until it initializes connection.
 
 The rest of the installation follows the standard process. If you are unfamiliar with the basics of installing macOS from recovery, google it.
-
 
 ## Graphics and firmware drivers
 
